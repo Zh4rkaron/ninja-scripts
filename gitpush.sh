@@ -3,11 +3,11 @@
 # Default values
 name="$PWD"  # Default to current directory
 repo=""
-description="First Commit"
+description="Commit to repository"  # Default commit message if none is provided
 
 # Display usage instructions
 usage() {
-    echo "Usage: $0 <directory> -o <repository-url> -d <description>"
+    echo "Usage: $0 <directory> -o <repository-url>"
     exit 1
 }
 
@@ -18,10 +18,6 @@ while [[ $# -gt 0 ]]; do
             repo="$2"  # Set the remote repository URL (SSH or HTTPS)
             shift 2
             ;;
-        -d)
-            description="$2"  # Set the commit description
-            shift 2
-            ;;
         *)
             name="$1"  # Set the directory (first argument, if provided)
             shift
@@ -29,8 +25,8 @@ while [[ $# -gt 0 ]]; do
     esac
 done
 
-# Check if the repository URL and description are provided
-if [[ -z "$repo" || -z "$description" ]]; then
+# Check if the repository URL is provided
+if [[ -z "$repo" ]]; then
     usage
 fi
 
