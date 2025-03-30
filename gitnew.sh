@@ -36,6 +36,18 @@ if [[ -z "$name" || -z "$description" ]]; then
     usage
 fi
 
+# Ask for confirmation before creating the repository
+echo -e "You are about to create a new repository with the following details:"
+echo -e "Name: $name"
+echo -e "Visibility: $visibility"
+echo -e "Description: $description"
+read -p "Do you want to continue? (y/n): " confirmation
+
+if [[ "$confirmation" != "y" && "$confirmation" != "Y" ]]; then
+    echo "Operation canceled. Exiting."
+    exit 0
+fi
+
 # Check if the user is logged into GitHub CLI
 if [ -s "$HOME/.config/gh/hosts.yml" ]; then
     echo -e "You're logged into your GitHub account.\nCreating repository $name..."
