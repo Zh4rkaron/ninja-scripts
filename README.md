@@ -24,6 +24,12 @@ The gitpush.sh script automates the process of committing and pushing changes to
 
 ---
 
+### **[gitpull.sh](gitpull.sh)**
+**Description**
+The gitpull command checks if a specified GitHub repository exists locally; if it does, it pulls the latest changes from the specified branch, and if it doesn't, it clones the repository and checks out the branch.
+
+---
+
 ### **📝 Usage**
 
 After cloning the repository, you can use these scripts by navigating to the repository folder and running the desired script.
